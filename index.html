@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Zante Adventure</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #f59e0b;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .beach-card {
+            transition: all 0.3s ease;
+        }
+        
+        .phrase-card {
+            transition: all 0.3s ease;
+        }
+        
+        .phrase-card:hover {
+            transform: rotate(1deg);
+            background-color: #fef3c7;
+        }
+        
+        .map-container {
+            height: 400px;
+            width: 100%;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-amber-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <i class="fas fa-umbrella-beach text-amber-500 text-2xl"></i>
+                    <span class="font-semibold text-gray-900 text-lg">Zante Adventure</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#places" class="nav-link text-gray-600 hover:text-amber-600">Places</a>
+                    <a href="#tips" class="nav-link text-gray-600 hover:text-amber-600">Tips</a>
+                    <a href="#phrases" class="nav-link text-gray-600 hover:text-amber-600">Greek Phrases</a>
+                    <a href="#emergency" class="nav-link text-gray-600 hover:text-amber-600">Emergency</a>
+                    <a href="#surprise" class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-full transition duration-300">Special Surprise</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button class="outline-none mobile-menu-button">
+                        <svg class="w-6 h-6 text-gray-600" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                            <path d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="hidden mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white">
+                <a href="#places" class="block px-3 py-2 text-gray-600 hover:text-amber-600">Places</a>
+                <a href="#tips" class="block px-3 py-2 text-gray-600 hover:text-amber-600">Tips</a>
+                <a href="#phrases" class="block px-3 py-2 text-gray-600 hover:text-amber-600">Greek Phrases</a>
+                <a href="#emergency" class="block px-3 py-2 text-gray-600 hover:text-amber-600">Emergency</a>
+                <a href="#surprise" class="block px-3 py-2 text-amber-600">Special Surprise</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero text-white py-20 md:py-32 px-4 md:px-0">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Your Zante Adventure Awaits</h1>
+            <p class="text-xl md:text-2xl mb-8">A carefully curated guide to make your holiday unforgettable</p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="#places" class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-8 rounded-full transition duration-300">Explore Zante</a>
+                <a href="#surprise" class="bg-transparent hover:bg-white hover:text-amber-600 text-white font-bold py-3 px-8 border-2 border-white rounded-full transition duration-300">Special Message</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction -->
+    <section class="py-16 px-4 md:px-0">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Welcome to Zakynthos (Zante)</h2>
+            <p class="text-lg text-gray-600 mb-8">Zakynthos, the "Flower of the Levant", is a Greek island in the Ionian Sea known for its stunning beaches, vibrant nightlife, and rich history. This guide will help you discover its hidden gems and make the most of your holiday.</p>
+            <div class="flex justify-center">
+                <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197b07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80" alt="Zante landscape" class="rounded-lg shadow-lg w-full md:w-3/4">
+            </div>
+        </div>
+    </section>
+
+    <!-- Places to Visit -->
+    <section id="places" class="py-16 bg-white px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Must-Visit Places in Zante</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Navagio Beach -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden beach-card hover:shadow-xl transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Navagio Beach" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="bg-amber-100 text-amber-800 text-xs font-semibold px-2.5 py-0.5 rounded">Top Pick</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Navagio Beach (Shipwreck Beach)</h3>
+                        <p class="text-gray-600 mb-4">The iconic beach with a shipwreck on white sand, surrounded by towering cliffs. Accessible only by boat, this is Zante's most famous landmark.</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-ship mr-2 text-amber-500"></i>
+                            <span>Best visited by boat tour</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Blue Caves -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden beach-card hover:shadow-xl transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1507525428033-7149dd17a639?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Blue Caves" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Blue Caves</h3>
+                        <p class="text-gray-600 mb-4">A series of stunning sea caves where the water glows an incredible azure blue. Perfect for swimming and photography.</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-water mr-2 text-blue-500"></i>
+                            <span>Best time to visit: Morning</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Keri Caves -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden beach-card hover:shadow-xl transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1505228395891-2511c7b5816e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Keri Caves" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Keri Caves & Lighthouse</h3>
+                        <p class="text-gray-600 mb-4">Spectacular cliffs with sea caves and a picturesque lighthouse offering panoramic views of the Ionian Sea.</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-lightbulb mr-2 text-yellow-500"></i>
+                            <span>Great sunset spot</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Marathonisi Island -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden beach-card hover:shadow-xl transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1503917988258-f87a78e3c995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Marathonisi Island" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Marathonisi Island (Turtle Island)</h3>
+                        <p class="text-gray-600 mb-4">A small uninhabited island that's a nesting ground for loggerhead sea turtles. Perfect for a peaceful beach day.</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-turtle mr-2 text-green-500"></i>
+                            <span>Protected area - be respectful</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Porto Limnionas -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden beach-card hover:shadow-xl transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1968&q=80" alt="Porto Limnionas" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Porto Limnionas</h3>
+                        <p class="text-gray-600 mb-4">A hidden gem with crystal clear waters in a natural bay surrounded by rocks. Great for snorkeling and cliff jumping.</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-mask mr-2 text-blue-400"></i>
+                            <span>Bring snorkeling gear</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Zakynthos Town -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden beach-card hover:shadow-xl transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1503917988258-f87a78e3c995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Zakynthos Town" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Zakynthos Town</h3>
+                        <p class="text-gray-600 mb-4">The island's charming capital with Venetian architecture, museums, and excellent restaurants. Don't miss Solomos Square.</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-utensils mr-2 text-red-500"></i>
+                            <span>Try local seafood</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Tips -->
+    <section id="tips" class="py-16 bg-amber-50 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Essential Travel Tips</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Getting Around -->
+                <div class="bg-white p-6 rounded-lg shadow-md card-hover transition duration-300">
+                    <div class="text-amber-500 mb-4">
+                        <i class="fas fa-car text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Getting Around</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                            <span>Rent a car or ATV for maximum flexibility</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                            <span>Public buses are available but limited</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                            <span>Taxis can be expensive but convenient</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Best Time to Visit -->
+                <div class="bg-white p-6 rounded-lg shadow-md card-hover transition duration-300">
+                    <div class="text-amber-500 mb-4">
+                        <i class="fas fa-sun text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Best Time to Visit</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                            <span>May-June & September for fewer crowds</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                            <span>July-August for vibrant nightlife</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                            <span>Water temperature is warmest in August</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- What to Pack -->
+                <div class="bg-white p-6 rounded-lg shadow-md card-hover transition duration-300">
+                    <div class="text-amber-500 mb-4">
+                        <i class="fas fa-suitcase text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">What to Pack</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                            <span>High SPF sunscreen (the sun is strong!)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                            <span>Comfortable walking shoes for exploring</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                            <span>Light cover-up for visiting churches</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Local Cuisine -->
+                <div class="bg-white p-6 rounded-lg shadow-md card-hover transition duration-300">
+                    <div class="text-amber-500 mb-4">
+                        <i class="fas fa-utensils text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Local Cuisine to Try</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                            <span>Moussaka - layered eggplant dish</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                            <span>Souvlaki - grilled meat skewers</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                            <span>Baklava - sweet pastry with nuts</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Money Matters -->
+                <div class="bg-white p-6 rounded-lg shadow-md card-hover transition duration-300">
+                    <div class="text-amber-500 mb-4">
+                        <i class="fas fa-euro-sign text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Money Matters</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                            <span>Euro is the local currency</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                            <span>Credit cards widely accepted</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                            <span>ATMs available in all major areas</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Cultural Tips -->
+                <div class="bg-white p-6 rounded-lg shadow-md card-hover transition duration-300">
+                    <div class="text-amber-500 mb-4">
+                        <i class="fas fa-hands-helping text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Cultural Tips</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                            <span>Greet with "Yasas" (hello)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                            <span>Tipping 5-10% is appreciated</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                            <span>Dress modestly when visiting churches</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Greek Phrases -->
+    <section id="phrases" class="py-16 bg-white px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Useful Greek Phrases</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Greetings -->
+                <div class="bg-amber-50 p-6 rounded-lg phrase-card">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-handshake mr-2 text-amber-600"></i> Greetings
+                    </h3>
+                    <div class="space-y-3">
+                        <div>
+                            <p class="font-semibold">Hello</p>
+                            <p class="text-gray-600">Yasas (Γειά σας)</p>
+                            <p class="text-sm text-gray-500">Formal greeting</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold">Good morning</p>
+                            <p class="text-gray-600">Kalimera (Καλημέρα)</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold">Good night</p>
+                            <p class="text-gray-600">Kalinichta (Καληνύχτα)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Common Phrases -->
+                <div class="bg-amber-50 p-6 rounded-lg phrase-card">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-comment-dots mr-2 text-amber-600"></i> Common Phrases
+                    </h3>
+                    <div class="space-y-3">
+                        <div>
+                            <p class="font-semibold">Thank you</p>
+                            <p class="text-gray-600">Efharisto (Ευχαριστώ)</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold">Please</p>
+                            <p class="text-gray-600">Parakalo (Παρακαλώ)</p>
+                            <p class="text-sm text-gray-500">Also means "You're welcome"</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold">Excuse me/Sorry</p>
+                            <p class="text-gray-600">Signomi (Συγγνώμη)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dining -->
+                <div class="bg-amber-50 p-6 rounded-lg phrase-card">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-utensils mr-2 text-amber-600"></i> Dining
+                    </h3>
+                    <div class="space-y-3">
+                        <div>
+                            <p class="font-semibold">Cheers!</p>
+                            <p class="text-gray-600">Yamas! (Γειά μας!)</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold">The bill, please</p>
+                            <p class="text-gray-600">To logariasmo, parakalo (Τον λογαριασμό, παρακαλώ)</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold">It's delicious</p>
+                            <p class="text-gray-600">Einai nostimo (Είναι νόστιμο)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Emergency -->
+                <div class="bg-amber-50 p-6 rounded-lg phrase-card">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-first-aid mr-2 text-amber-600"></i> Emergency
+                    </h3>
+                    <div class="space-y-3">
+                        <div>
+                            <p class="font-semibold">Help!</p>
+                            <p class="text-gray-600">Voithia! (Βοήθεια!)</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold">I need a doctor</p>
+                            <p class="text-gray-600">Hreiazomai enan giatro (Χρειάζομαι έναν γιατρό)</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold">Where is the hospital?</p>
+                            <p class="text-gray-600">Pou ine to nosokomio? (Πού είναι το νοσοκομείο;)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Contacts -->
+    <section id="emergency" class="py-16 bg-red-50 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Emergency Contacts</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- General Emergency -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-red-500 mb-4">
+                        <i class="fas fa-phone-alt text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">General Emergency</h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-ambulance text-red-500 mr-3"></i>
+                            <div>
+                                <p class="font-semibold">European Emergency Number</p>
+                                <p class="text-2xl font-bold text-red-600">112</p>
+                            </div>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-hospital text-red-500 mr-3"></i>
+                            <div>
+                                <p class="font-semibold">General Hospital of Zakynthos</p>
+                                <p class="text-xl font-bold text-red-600">+30 26950 29100</p>
+                                <p class="text-sm">Alexandrou Roma 1, Zakynthos Town</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Police & Tourist Police -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-red-500 mb-4">
+                        <i class="fas fa-shield-alt text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Police & Tourist Police</h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-police-box text-red-500 mr-3"></i>
+                            <div>
+                                <p class="font-semibold">Police</p>
+                                <p class="text-xl font-bold text-red-600">100</p>
+                            </div>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-passport text-red-500 mr-3"></i>
+                            <div>
+                                <p class="font-semibold">Tourist Police</p>
+                                <p class="text-xl font-bold text-red-600">+30 26950 24482</p>
+                                <p class="text-sm">Specialized in helping tourists</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Embassies & Consulates -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-red-500 mb-4">
+                        <i class="fas fa-flag text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Embassies & Consulates</h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-building text-red-500 mr-3 mt-1"></i>
+                            <div>
+                                <p class="font-semibold">UK Consulate</p>
+                                <p class="text-xl font-bold text-red-600">+30 210 727 2600</p>
+                                <p class="text-sm">Athens (nearest to Zante)</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-building text-red-500 mr-3 mt-1"></i>
+                            <div>
+                                <p class="font-semibold">US Embassy</p>
+                                <p class="text-xl font-bold text-red-600">+30 210 721 2951</p>
+                                <p class="text-sm">Athens (emergency assistance)</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Other Useful Numbers -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-red-500 mb-4">
+                        <i class="fas fa-info-circle text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Other Useful Numbers</h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-fire-extinguisher text-red-500 mr-3"></i>
+                            <div>
+                                <p class="font-semibold">Fire Department</p>
+                                <p class="text-xl font-bold text-red-600">199</p>
+                            </div>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-taxi text-red-500 mr-3"></i>
+                            <div>
+                                <p class="font-semibold">Taxi Service</p>
+                                <p class="text-xl font-bold text-red-600">+30 26950 48400</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Pharmacy & Medical -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-red-500 mb-4">
+                        <i class="fas fa-prescription-bottle-alt text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Pharmacy & Medical</h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-clinic-medical text-red-500 mr-3"></i>
+                            <div>
+                                <p class="font-semibold">24-Hour Pharmacy</p>
+                                <p class="text-xl font-bold text-red-600">+30 26950 22222</p>
+                                <p class="text-sm">Ask your hotel for nearest location</p>
+                            </div>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-user-md text-red-500 mr-3"></i>
+                            <div>
+                                <p class="font-semibold">Private Doctor Call-out</p>
+                                <p class="text-xl font-bold text-red-600">+30 26950 29100</p>
+                                <p class="text-sm">Ask hotel to arrange if needed</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Lost & Found -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-red-500 mb-4">
+                        <i class="fas fa-search text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Lost & Found</h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-plane text-red-500 mr-3"></i>
+                            <div>
+                                <p class="font-semibold">Zakynthos Airport Lost & Found</p>
+                                <p class="text-xl font-bold text-red-600">+30 26950 29500</p>
+                            </div>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-bus text-red-500 mr-3"></i>
+                            <div>
+                                <p class="font-semibold">Bus Terminal Lost Property</p>
+                                <p class="text-xl font-bold text-red-600">+30 26950 22255</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="py-16 bg-white px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Zante Map & Key Locations</h2>
+            
+            <div class="bg-gray-100 p-4 rounded-lg">
+                <div class="map-container rounded-lg overflow-hidden">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d201170.1002031922!2d20.7123657!3d37.7899685!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1367b3a4e0a3a7a9%3A0x400bd2ce2b9c300!2sZakynthos!5e0!3m2!1sen!2sgr!4v1689681502052!5m2!1sen!2sgr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+                    <div class="flex items-start">
+                        <div class="bg-amber-500 text-white p-2 rounded-full mr-3">
+                            <i class="fas fa-umbrella-beach text-sm"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Navagio Beach</h4>
+                            <p class="text-sm text-gray-600">Northwest coast</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-blue-500 text-white p-2 rounded-full mr-3">
+                            <i class="fas fa-water text-sm"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Blue Caves</h4>
+                            <p class="text-sm text-gray-600">North of Skinari Cape</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-green-500 text-white p-2 rounded-full mr-3">
+                            <i class="fas fa-city text-sm"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Zakynthos Town</h4>
+                            <p class="text-sm text-gray-600">Eastern coast</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-purple-500 text-white p-2 rounded-full mr-3">
+                            <i class="fas fa-plane text-sm"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Zakynthos Airport</h4>
+                            <p class="text-sm text-gray-600">4km from Zakynthos Town</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Surprise -->
+    <section id="surprise" class="py-20 px-4 bg-gradient-to-b from-amber-100 to-amber-200">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="bg-white p-8 md:p-12 rounded-xl shadow-lg relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 text-amber-100 text-9xl z-0">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="relative z-10">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">A Special Message For You</h2>
+                    <div class="text-lg text-gray-700 mb-8 text-left space-y-4">
+                        <p>My love,</p>
+                        <p>I'm so excited for your adventure in Zante! I wanted to create this little guide to help you make the most of your holiday and to show how much I care about you having an amazing time.</p>
+                        <p>Zante is full of magical places - from the famous Shipwreck Beach to hidden coves with crystal clear waters. I hope you'll get to experience all its beauty, taste delicious Greek food, and make wonderful memories.</p>
+                        <p>Remember to stay safe (check the emergency contacts just in case), try speaking a little Greek (the locals will love it!), and most importantly - enjoy every moment!</p>
+                        <p>I can't wait to hear all about your adventures when you're back. Take lots of photos and know that I'll be thinking of you every day.</p>
+                        <p class="font-bold">Have the most incredible time, my love!</p>
+                    </div>
+                    <div class="flex justify-center">
+                        <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Heart in sand" class="rounded-lg w-full md:w-2/3">
+                    </div>
+                    <div class="mt-8">
+                        <p class="text-amber-600 font-bold">With all my love,</p>
+                        <p class="text-xl font-bold text-gray-800">[Your Name]</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Zante Adventure</h3>
+                    <p class="text-gray-400">A lovingly created guide to help you discover the beauty of Zakynthos island.</p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-pinterest"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#places" class="text-gray-400 hover:text-amber-400 transition duration-300">Places to Visit</a></li>
+                        <li><a href="#tips" class="text-gray-400 hover:text-amber-400 transition duration-300">Travel Tips</a></li>
+                        <li><a href="#phrases" class="text-gray-400 hover:text-amber-400 transition duration-300">Greek Phrases</a></li>
+                        <li><a href="#emergency" class="text-gray-400 hover:text-amber-400 transition duration-300">Emergency Contacts</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Weather in Zante</h3>
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-sun text-amber-400 mr-2 text-xl"></i>
+                        <span class="text-gray-400">Summer: 25°C - 35°C</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-umbrella text-blue-400 mr-2 text-xl"></i>
+                        <span class="text-gray-400">Rain is rare in summer</span>
+                    </div>
+                    <div class="mt-6">
+                        <p class="text-gray-400">Best time for swimming: June to September</p>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>Created with <i class="fas fa-heart text-red-400"></i> for your Zante adventure</p>
+                <p class="mt-2 text-sm">© 2023 Zante Adventure Guide. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="#surprise" class="bg-amber-500 hover:bg-amber-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg floating transition duration-300">
+            <i class="fas fa-heart text-xl"></i>
+        </a>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const btn = document.querySelector(".mobile-menu-button");
+        const menu = document.querySelector(".mobile-menu");
+
+        btn.addEventListener("click", () => {
+            menu.classList.toggle("hidden");
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Smooth scrolling for all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
