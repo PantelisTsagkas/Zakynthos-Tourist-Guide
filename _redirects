@@ -1,0 +1,5 @@
+# Redirect www to non-www
+https://www.yourdomain.com/* https://yourdomain.com/:splat 301!
+
+# Redirect index2.html to index.html
+/index2.html /index.html 301

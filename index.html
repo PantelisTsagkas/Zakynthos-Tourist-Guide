@@ -1,797 +1,1098 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Zante Adventure</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Your complete guide to Zakynthos (Zante) - discover must-visit places, travel tips, Greek phrases, and emergency contacts for an unforgettable Greek island adventure."
+    />
+    <meta
+      name="keywords"
+      content="Zakynthos, Zante, Greece, travel guide, Navagio Beach, Blue Caves, Greek islands, holiday guide"
+    />
+    <meta name="author" content="Zante Adventure Guide" />
+    <title>Your Zante Adventure - Complete Travel Guide to Zakynthos</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏝️</text></svg>"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
+      @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap");
+
+      body {
+        font-family: "Poppins", sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Playfair Display", serif;
+      }
+
+      .hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url("https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .nav-link {
+        position: relative;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #f59e0b;
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .beach-card {
+        transition: all 0.3s ease;
+      }
+
+      .phrase-card {
+        transition: all 0.3s ease;
+      }
+
+      .phrase-card:hover {
+        transform: rotate(1deg);
+        background-color: #fef3c7;
+      }
+
+      .map-container {
+        height: 400px;
+        width: 100%;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
         }
-        
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
+        50% {
+          transform: translateY(-10px);
         }
-        
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-position: center;
+        100% {
+          transform: translateY(0px);
         }
-        
-        .nav-link {
-            position: relative;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: #f59e0b;
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        
-        .beach-card {
-            transition: all 0.3s ease;
-        }
-        
-        .phrase-card {
-            transition: all 0.3s ease;
-        }
-        
-        .phrase-card:hover {
-            transform: rotate(1deg);
-            background-color: #fef3c7;
-        }
-        
-        .map-container {
-            height: 400px;
-            width: 100%;
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .floating {
-            animation: float 3s ease-in-out infinite;
-        }
+      }
+
+      .floating {
+        animation: float 3s ease-in-out infinite;
+      }
     </style>
-</head>
-<body class="bg-amber-50">
+  </head>
+  <body class="bg-amber-50">
     <!-- Navigation -->
     <nav class="bg-white shadow-lg sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="flex justify-between items-center py-4">
-                <div class="flex items-center space-x-4">
-                    <i class="fas fa-umbrella-beach text-amber-500 text-2xl"></i>
-                    <span class="font-semibold text-gray-900 text-lg">Zante Adventure</span>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#places" class="nav-link text-gray-600 hover:text-amber-600">Places</a>
-                    <a href="#tips" class="nav-link text-gray-600 hover:text-amber-600">Tips</a>
-                    <a href="#phrases" class="nav-link text-gray-600 hover:text-amber-600">Greek Phrases</a>
-                    <a href="#emergency" class="nav-link text-gray-600 hover:text-amber-600">Emergency</a>
-                    <a href="#surprise" class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-full transition duration-300">Special Surprise</a>
-                </div>
-                <div class="md:hidden flex items-center">
-                    <button class="outline-none mobile-menu-button">
-                        <svg class="w-6 h-6 text-gray-600" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                            <path d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+          <div class="flex items-center space-x-4">
+            <i class="fas fa-umbrella-beach text-amber-500 text-2xl"></i>
+            <span class="font-semibold text-gray-900 text-lg"
+              >Zante Adventure</span
+            >
+          </div>
+          <div class="hidden md:flex items-center space-x-8">
+            <a
+              href="#places"
+              class="nav-link text-gray-600 hover:text-amber-600"
+              >Places</a
+            >
+            <a href="#tips" class="nav-link text-gray-600 hover:text-amber-600"
+              >Tips</a
+            >
+            <a
+              href="#phrases"
+              class="nav-link text-gray-600 hover:text-amber-600"
+              >Greek Phrases</a
+            >
+            <a
+              href="#emergency"
+              class="nav-link text-gray-600 hover:text-amber-600"
+              >Emergency</a
+            >
+            <a
+              href="#surprise"
+              class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-full transition duration-300"
+              >Special Surprise</a
+            >
+          </div>
+          <div class="md:hidden flex items-center">
+            <button class="outline-none mobile-menu-button">
+              <svg
+                class="w-6 h-6 text-gray-600"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
         </div>
-        <div class="hidden mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white">
-                <a href="#places" class="block px-3 py-2 text-gray-600 hover:text-amber-600">Places</a>
-                <a href="#tips" class="block px-3 py-2 text-gray-600 hover:text-amber-600">Tips</a>
-                <a href="#phrases" class="block px-3 py-2 text-gray-600 hover:text-amber-600">Greek Phrases</a>
-                <a href="#emergency" class="block px-3 py-2 text-gray-600 hover:text-amber-600">Emergency</a>
-                <a href="#surprise" class="block px-3 py-2 text-amber-600">Special Surprise</a>
-            </div>
+      </div>
+      <div class="hidden mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white">
+          <a
+            href="#places"
+            class="block px-3 py-2 text-gray-600 hover:text-amber-600"
+            >Places</a
+          >
+          <a
+            href="#tips"
+            class="block px-3 py-2 text-gray-600 hover:text-amber-600"
+            >Tips</a
+          >
+          <a
+            href="#phrases"
+            class="block px-3 py-2 text-gray-600 hover:text-amber-600"
+            >Greek Phrases</a
+          >
+          <a
+            href="#emergency"
+            class="block px-3 py-2 text-gray-600 hover:text-amber-600"
+            >Emergency</a
+          >
+          <a href="#surprise" class="block px-3 py-2 text-amber-600"
+            >Special Surprise</a
+          >
         </div>
+      </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero text-white py-20 md:py-32 px-4 md:px-0">
-        <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">Your Zante Adventure Awaits</h1>
-            <p class="text-xl md:text-2xl mb-8">A carefully curated guide to make your holiday unforgettable</p>
-            <div class="flex flex-col md:flex-row justify-center gap-4">
-                <a href="#places" class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-8 rounded-full transition duration-300">Explore Zante</a>
-                <a href="#surprise" class="bg-transparent hover:bg-white hover:text-amber-600 text-white font-bold py-3 px-8 border-2 border-white rounded-full transition duration-300">Special Message</a>
-            </div>
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">
+          For the most beautiful woman in York, Ali!
+        </h1>
+        <p class="text-xl md:text-2xl mb-8">
+          A carefully curated guide to make your holiday unforgettable
+        </p>
+        <div class="flex flex-col md:flex-row justify-center gap-4">
+          <a
+            href="#places"
+            class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-8 rounded-full transition duration-300"
+            >Explore Zante</a
+          >
+          <a
+            href="#surprise"
+            class="bg-transparent hover:bg-white hover:text-amber-600 text-white font-bold py-3 px-8 border-2 border-white rounded-full transition duration-300"
+            >Special Message</a
+          >
         </div>
+      </div>
     </section>
 
     <!-- Introduction -->
     <section class="py-16 px-4 md:px-0">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Welcome to Zakynthos (Zante)</h2>
-            <p class="text-lg text-gray-600 mb-8">Zakynthos, the "Flower of the Levant", is a Greek island in the Ionian Sea known for its stunning beaches, vibrant nightlife, and rich history. This guide will help you discover its hidden gems and make the most of your holiday.</p>
-            <div class="flex justify-center">
-                <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197b07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80" alt="Zante landscape" class="rounded-lg shadow-lg w-full md:w-3/4">
-            </div>
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+          Welcome to Zakynthos (Zante)
+        </h2>
+        <p class="text-lg text-gray-600 mb-8">
+          Zakynthos, the "Flower of the Levant", is a Greek island in the Ionian
+          Sea known for its stunning beaches, vibrant nightlife, and rich
+          history. This guide will help you discover its hidden gems and make
+          the most of your holiday.
+        </p>
+        <div class="flex justify-center">
+          <img
+            src="first-image.jpg"
+            alt="Zante landscape"
+            class="rounded-lg shadow-lg w-full md:w-3/4"
+          />
         </div>
+      </div>
     </section>
 
     <!-- Places to Visit -->
     <section id="places" class="py-16 bg-white px-4">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Must-Visit Places in Zante</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Navagio Beach -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden beach-card hover:shadow-xl transition duration-300">
-                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Navagio Beach" class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <div class="flex items-center mb-2">
-                            <span class="bg-amber-100 text-amber-800 text-xs font-semibold px-2.5 py-0.5 rounded">Top Pick</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Navagio Beach (Shipwreck Beach)</h3>
-                        <p class="text-gray-600 mb-4">The iconic beach with a shipwreck on white sand, surrounded by towering cliffs. Accessible only by boat, this is Zante's most famous landmark.</p>
-                        <div class="flex items-center text-sm text-gray-500">
-                            <i class="fas fa-ship mr-2 text-amber-500"></i>
-                            <span>Best visited by boat tour</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Blue Caves -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden beach-card hover:shadow-xl transition duration-300">
-                    <img src="https://images.unsplash.com/photo-1507525428033-7149dd17a639?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Blue Caves" class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Blue Caves</h3>
-                        <p class="text-gray-600 mb-4">A series of stunning sea caves where the water glows an incredible azure blue. Perfect for swimming and photography.</p>
-                        <div class="flex items-center text-sm text-gray-500">
-                            <i class="fas fa-water mr-2 text-blue-500"></i>
-                            <span>Best time to visit: Morning</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Keri Caves -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden beach-card hover:shadow-xl transition duration-300">
-                    <img src="https://images.unsplash.com/photo-1505228395891-2511c7b5816e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Keri Caves" class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Keri Caves & Lighthouse</h3>
-                        <p class="text-gray-600 mb-4">Spectacular cliffs with sea caves and a picturesque lighthouse offering panoramic views of the Ionian Sea.</p>
-                        <div class="flex items-center text-sm text-gray-500">
-                            <i class="fas fa-lightbulb mr-2 text-yellow-500"></i>
-                            <span>Great sunset spot</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Marathonisi Island -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden beach-card hover:shadow-xl transition duration-300">
-                    <img src="https://images.unsplash.com/photo-1503917988258-f87a78e3c995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Marathonisi Island" class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Marathonisi Island (Turtle Island)</h3>
-                        <p class="text-gray-600 mb-4">A small uninhabited island that's a nesting ground for loggerhead sea turtles. Perfect for a peaceful beach day.</p>
-                        <div class="flex items-center text-sm text-gray-500">
-                            <i class="fas fa-turtle mr-2 text-green-500"></i>
-                            <span>Protected area - be respectful</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Porto Limnionas -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden beach-card hover:shadow-xl transition duration-300">
-                    <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1968&q=80" alt="Porto Limnionas" class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Porto Limnionas</h3>
-                        <p class="text-gray-600 mb-4">A hidden gem with crystal clear waters in a natural bay surrounded by rocks. Great for snorkeling and cliff jumping.</p>
-                        <div class="flex items-center text-sm text-gray-500">
-                            <i class="fas fa-mask mr-2 text-blue-400"></i>
-                            <span>Bring snorkeling gear</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Zakynthos Town -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden beach-card hover:shadow-xl transition duration-300">
-                    <img src="https://images.unsplash.com/photo-1503917988258-f87a78e3c995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Zakynthos Town" class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Zakynthos Town</h3>
-                        <p class="text-gray-600 mb-4">The island's charming capital with Venetian architecture, museums, and excellent restaurants. Don't miss Solomos Square.</p>
-                        <div class="flex items-center text-sm text-gray-500">
-                            <i class="fas fa-utensils mr-2 text-red-500"></i>
-                            <span>Try local seafood</span>
-                        </div>
-                    </div>
-                </div>
+      <div class="max-w-6xl mx-auto">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12"
+        >
+          Must-Visit Places in Zante
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Navagio Beach -->
+          <div
+            class="bg-white rounded-xl shadow-md overflow-hidden beach-card hover:shadow-xl transition duration-300"
+          >
+            <img
+              src="beach-6514331_1280.jpg"
+              alt="Navagio Beach"
+              class="w-full h-64 object-cover"
+            />
+            <div class="p-6">
+              <div class="flex items-center mb-2">
+                <span
+                  class="bg-amber-100 text-amber-800 text-xs font-semibold px-2.5 py-0.5 rounded"
+                  >Top Pick</span
+                >
+              </div>
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Navagio Beach (Shipwreck Beach)
+              </h3>
+              <p class="text-gray-600 mb-4">
+                The iconic beach with a shipwreck on white sand, surrounded by
+                towering cliffs. Accessible only by boat, this is Zante's most
+                famous landmark.
+              </p>
+              <div class="flex items-center text-sm text-gray-500">
+                <i class="fas fa-ship mr-2 text-amber-500"></i>
+                <span>Best visited by boat tour</span>
+              </div>
             </div>
+          </div>
+
+          <!-- Blue Caves -->
+          <div
+            class="bg-white rounded-xl shadow-md overflow-hidden beach-card hover:shadow-xl transition duration-300"
+          >
+            <img
+              src="marble-393356_1280.jpg"
+              alt="Blue Caves"
+              class="w-full h-64 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-800 mb-2">Blue Caves</h3>
+              <p class="text-gray-600 mb-4">
+                A series of stunning sea caves where the water glows an
+                incredible azure blue. Perfect for swimming and photography.
+              </p>
+              <div class="flex items-center text-sm text-gray-500">
+                <i class="fas fa-water mr-2 text-blue-500"></i>
+                <span>Best time to visit: Morning</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Keri Caves -->
+          <div
+            class="bg-white rounded-xl shadow-md overflow-hidden beach-card hover:shadow-xl transition duration-300"
+          >
+            <img
+              src="lighthouse-4807359_1280.jpg"
+              alt="Keri Caves"
+              class="w-full h-64 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Keri Caves & Lighthouse
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Spectacular cliffs with sea caves and a picturesque lighthouse
+                offering panoramic views of the Ionian Sea.
+              </p>
+              <div class="flex items-center text-sm text-gray-500">
+                <i class="fas fa-lightbulb mr-2 text-yellow-500"></i>
+                <span>Great sunset spot</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Marathonisi Island -->
+          <div
+            class="bg-white rounded-xl shadow-md overflow-hidden beach-card hover:shadow-xl transition duration-300"
+          >
+            <img
+              src="data:image/jpeg;base64,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"
+              alt="Marathonisi Island"
+              class="w-full h-64 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Marathonisi Island (Turtle Island)
+              </h3>
+              <p class="text-gray-600 mb-4">
+                A small uninhabited island that's a nesting ground for
+                loggerhead sea turtles. Perfect for a peaceful beach day.
+              </p>
+              <div class="flex items-center text-sm text-gray-500">
+                <i class="fas fa-turtle mr-2 text-green-500"></i>
+                <span>Protected area - be respectful</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Porto Limnionas -->
+          <div
+            class="bg-white rounded-xl shadow-md overflow-hidden beach-card hover:shadow-xl transition duration-300"
+          >
+            <img
+              src="data:image/jpeg;base64,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"
+              alt="Porto Limnionas"
+              class="w-full h-64 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Porto Limnionas
+              </h3>
+              <p class="text-gray-600 mb-4">
+                A hidden gem with crystal clear waters in a natural bay
+                surrounded by rocks. Great for snorkeling and cliff jumping.
+              </p>
+              <div class="flex items-center text-sm text-gray-500">
+                <i class="fas fa-mask mr-2 text-blue-400"></i>
+                <span>Bring snorkeling gear</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Zakynthos Town -->
+          <div
+            class="bg-white rounded-xl shadow-md overflow-hidden beach-card hover:shadow-xl transition duration-300"
+          >
+            <img
+              src="data:image/jpeg;base64,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"
+              alt="Zakynthos Town"
+              class="w-full h-64 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Zakynthos Town
+              </h3>
+              <p class="text-gray-600 mb-4">
+                The island's charming capital with Venetian architecture,
+                museums, and excellent restaurants. Don't miss Solomos Square.
+              </p>
+              <div class="flex items-center text-sm text-gray-500">
+                <i class="fas fa-utensils mr-2 text-red-500"></i>
+                <span>Try local seafood</span>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Travel Tips -->
     <section id="tips" class="py-16 bg-amber-50 px-4">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Essential Travel Tips</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Getting Around -->
-                <div class="bg-white p-6 rounded-lg shadow-md card-hover transition duration-300">
-                    <div class="text-amber-500 mb-4">
-                        <i class="fas fa-car text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Getting Around</h3>
-                    <ul class="space-y-2 text-gray-600">
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
-                            <span>Rent a car or ATV for maximum flexibility</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
-                            <span>Public buses are available but limited</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
-                            <span>Taxis can be expensive but convenient</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <!-- Best Time to Visit -->
-                <div class="bg-white p-6 rounded-lg shadow-md card-hover transition duration-300">
-                    <div class="text-amber-500 mb-4">
-                        <i class="fas fa-sun text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Best Time to Visit</h3>
-                    <ul class="space-y-2 text-gray-600">
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
-                            <span>May-June & September for fewer crowds</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
-                            <span>July-August for vibrant nightlife</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
-                            <span>Water temperature is warmest in August</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <!-- What to Pack -->
-                <div class="bg-white p-6 rounded-lg shadow-md card-hover transition duration-300">
-                    <div class="text-amber-500 mb-4">
-                        <i class="fas fa-suitcase text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">What to Pack</h3>
-                    <ul class="space-y-2 text-gray-600">
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
-                            <span>High SPF sunscreen (the sun is strong!)</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
-                            <span>Comfortable walking shoes for exploring</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
-                            <span>Light cover-up for visiting churches</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <!-- Local Cuisine -->
-                <div class="bg-white p-6 rounded-lg shadow-md card-hover transition duration-300">
-                    <div class="text-amber-500 mb-4">
-                        <i class="fas fa-utensils text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Local Cuisine to Try</h3>
-                    <ul class="space-y-2 text-gray-600">
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
-                            <span>Moussaka - layered eggplant dish</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
-                            <span>Souvlaki - grilled meat skewers</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
-                            <span>Baklava - sweet pastry with nuts</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <!-- Money Matters -->
-                <div class="bg-white p-6 rounded-lg shadow-md card-hover transition duration-300">
-                    <div class="text-amber-500 mb-4">
-                        <i class="fas fa-euro-sign text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Money Matters</h3>
-                    <ul class="space-y-2 text-gray-600">
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
-                            <span>Euro is the local currency</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
-                            <span>Credit cards widely accepted</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
-                            <span>ATMs available in all major areas</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <!-- Cultural Tips -->
-                <div class="bg-white p-6 rounded-lg shadow-md card-hover transition duration-300">
-                    <div class="text-amber-500 mb-4">
-                        <i class="fas fa-hands-helping text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Cultural Tips</h3>
-                    <ul class="space-y-2 text-gray-600">
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
-                            <span>Greet with "Yasas" (hello)</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
-                            <span>Tipping 5-10% is appreciated</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
-                            <span>Dress modestly when visiting churches</span>
-                        </li>
-                    </ul>
-                </div>
+      <div class="max-w-6xl mx-auto">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12"
+        >
+          Essential Travel Tips
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Getting Around -->
+          <div
+            class="bg-white p-6 rounded-lg shadow-md card-hover transition duration-300"
+          >
+            <div class="text-amber-500 mb-4">
+              <i class="fas fa-car text-4xl"></i>
             </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Getting Around</h3>
+            <ul class="space-y-2 text-gray-600">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                <span>Rent a car or ATV for maximum flexibility</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                <span>Public buses are available but limited</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                <span>Taxis can be expensive but convenient</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Best Time to Visit -->
+          <div
+            class="bg-white p-6 rounded-lg shadow-md card-hover transition duration-300"
+          >
+            <div class="text-amber-500 mb-4">
+              <i class="fas fa-sun text-4xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              Best Time to Visit
+            </h3>
+            <ul class="space-y-2 text-gray-600">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                <span>May-June & September for fewer crowds</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                <span>July-August for vibrant nightlife</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                <span>Water temperature is warmest in August</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- What to Pack -->
+          <div
+            class="bg-white p-6 rounded-lg shadow-md card-hover transition duration-300"
+          >
+            <div class="text-amber-500 mb-4">
+              <i class="fas fa-suitcase text-4xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">What to Pack</h3>
+            <ul class="space-y-2 text-gray-600">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                <span>High SPF sunscreen (the sun is strong!)</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                <span>Comfortable walking shoes for exploring</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                <span>Light cover-up for visiting churches</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Local Cuisine -->
+          <div
+            class="bg-white p-6 rounded-lg shadow-md card-hover transition duration-300"
+          >
+            <div class="text-amber-500 mb-4">
+              <i class="fas fa-utensils text-4xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              Local Cuisine to Try
+            </h3>
+            <ul class="space-y-2 text-gray-600">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                <span>Moussaka - layered eggplant dish</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                <span>Souvlaki - grilled meat skewers</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                <span>Baklava - sweet pastry with nuts</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Money Matters -->
+          <div
+            class="bg-white p-6 rounded-lg shadow-md card-hover transition duration-300"
+          >
+            <div class="text-amber-500 mb-4">
+              <i class="fas fa-euro-sign text-4xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Money Matters</h3>
+            <ul class="space-y-2 text-gray-600">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                <span>Euro is the local currency</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                <span>Credit cards widely accepted</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                <span>ATMs available in all major areas</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Cultural Tips -->
+          <div
+            class="bg-white p-6 rounded-lg shadow-md card-hover transition duration-300"
+          >
+            <div class="text-amber-500 mb-4">
+              <i class="fas fa-hands-helping text-4xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Cultural Tips</h3>
+            <ul class="space-y-2 text-gray-600">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                <span>Greet with "Yasas" (hello)</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                <span>Tipping 5-10% is appreciated</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                <span>Dress modestly when visiting churches</span>
+              </li>
+            </ul>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Greek Phrases -->
     <section id="phrases" class="py-16 bg-white px-4">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Useful Greek Phrases</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Greetings -->
-                <div class="bg-amber-50 p-6 rounded-lg phrase-card">
-                    <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
-                        <i class="fas fa-handshake mr-2 text-amber-600"></i> Greetings
-                    </h3>
-                    <div class="space-y-3">
-                        <div>
-                            <p class="font-semibold">Hello</p>
-                            <p class="text-gray-600">Yasas (Γειά σας)</p>
-                            <p class="text-sm text-gray-500">Formal greeting</p>
-                        </div>
-                        <div>
-                            <p class="font-semibold">Good morning</p>
-                            <p class="text-gray-600">Kalimera (Καλημέρα)</p>
-                        </div>
-                        <div>
-                            <p class="font-semibold">Good night</p>
-                            <p class="text-gray-600">Kalinichta (Καληνύχτα)</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Common Phrases -->
-                <div class="bg-amber-50 p-6 rounded-lg phrase-card">
-                    <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
-                        <i class="fas fa-comment-dots mr-2 text-amber-600"></i> Common Phrases
-                    </h3>
-                    <div class="space-y-3">
-                        <div>
-                            <p class="font-semibold">Thank you</p>
-                            <p class="text-gray-600">Efharisto (Ευχαριστώ)</p>
-                        </div>
-                        <div>
-                            <p class="font-semibold">Please</p>
-                            <p class="text-gray-600">Parakalo (Παρακαλώ)</p>
-                            <p class="text-sm text-gray-500">Also means "You're welcome"</p>
-                        </div>
-                        <div>
-                            <p class="font-semibold">Excuse me/Sorry</p>
-                            <p class="text-gray-600">Signomi (Συγγνώμη)</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Dining -->
-                <div class="bg-amber-50 p-6 rounded-lg phrase-card">
-                    <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
-                        <i class="fas fa-utensils mr-2 text-amber-600"></i> Dining
-                    </h3>
-                    <div class="space-y-3">
-                        <div>
-                            <p class="font-semibold">Cheers!</p>
-                            <p class="text-gray-600">Yamas! (Γειά μας!)</p>
-                        </div>
-                        <div>
-                            <p class="font-semibold">The bill, please</p>
-                            <p class="text-gray-600">To logariasmo, parakalo (Τον λογαριασμό, παρακαλώ)</p>
-                        </div>
-                        <div>
-                            <p class="font-semibold">It's delicious</p>
-                            <p class="text-gray-600">Einai nostimo (Είναι νόστιμο)</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Emergency -->
-                <div class="bg-amber-50 p-6 rounded-lg phrase-card">
-                    <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
-                        <i class="fas fa-first-aid mr-2 text-amber-600"></i> Emergency
-                    </h3>
-                    <div class="space-y-3">
-                        <div>
-                            <p class="font-semibold">Help!</p>
-                            <p class="text-gray-600">Voithia! (Βοήθεια!)</p>
-                        </div>
-                        <div>
-                            <p class="font-semibold">I need a doctor</p>
-                            <p class="text-gray-600">Hreiazomai enan giatro (Χρειάζομαι έναν γιατρό)</p>
-                        </div>
-                        <div>
-                            <p class="font-semibold">Where is the hospital?</p>
-                            <p class="text-gray-600">Pou ine to nosokomio? (Πού είναι το νοσοκομείο;)</p>
-                        </div>
-                    </div>
-                </div>
+      <div class="max-w-6xl mx-auto">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12"
+        >
+          Useful Greek Phrases
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Greetings -->
+          <div class="bg-amber-50 p-6 rounded-lg phrase-card">
+            <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
+              <i class="fas fa-handshake mr-2 text-amber-600"></i> Greetings
+            </h3>
+            <div class="space-y-3">
+              <div>
+                <p class="font-semibold">Hello</p>
+                <p class="text-gray-600">Yasas (Γειά σας)</p>
+                <p class="text-sm text-gray-500">Formal greeting</p>
+              </div>
+              <div>
+                <p class="font-semibold">Good morning</p>
+                <p class="text-gray-600">Kalimera (Καλημέρα)</p>
+              </div>
+              <div>
+                <p class="font-semibold">Good night</p>
+                <p class="text-gray-600">Kalinichta (Καληνύχτα)</p>
+              </div>
             </div>
+          </div>
+
+          <!-- Common Phrases -->
+          <div class="bg-amber-50 p-6 rounded-lg phrase-card">
+            <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
+              <i class="fas fa-comment-dots mr-2 text-amber-600"></i> Common
+              Phrases
+            </h3>
+            <div class="space-y-3">
+              <div>
+                <p class="font-semibold">Thank you</p>
+                <p class="text-gray-600">Efharisto (Ευχαριστώ)</p>
+              </div>
+              <div>
+                <p class="font-semibold">Please</p>
+                <p class="text-gray-600">Parakalo (Παρακαλώ)</p>
+                <p class="text-sm text-gray-500">Also means "You're welcome"</p>
+              </div>
+              <div>
+                <p class="font-semibold">Excuse me/Sorry</p>
+                <p class="text-gray-600">Signomi (Συγγνώμη)</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dining -->
+          <div class="bg-amber-50 p-6 rounded-lg phrase-card">
+            <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
+              <i class="fas fa-utensils mr-2 text-amber-600"></i> Dining
+            </h3>
+            <div class="space-y-3">
+              <div>
+                <p class="font-semibold">Cheers!</p>
+                <p class="text-gray-600">Yamas! (Γειά μας!)</p>
+              </div>
+              <div>
+                <p class="font-semibold">The bill, please</p>
+                <p class="text-gray-600">
+                  To logariasmo, parakalo (Τον λογαριασμό, παρακαλώ)
+                </p>
+              </div>
+              <div>
+                <p class="font-semibold">It's delicious</p>
+                <p class="text-gray-600">Einai nostimo (Είναι νόστιμο)</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Emergency -->
+          <div class="bg-amber-50 p-6 rounded-lg phrase-card">
+            <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
+              <i class="fas fa-first-aid mr-2 text-amber-600"></i> Emergency
+            </h3>
+            <div class="space-y-3">
+              <div>
+                <p class="font-semibold">Help!</p>
+                <p class="text-gray-600">Voithia! (Βοήθεια!)</p>
+              </div>
+              <div>
+                <p class="font-semibold">I need a doctor</p>
+                <p class="text-gray-600">
+                  Hreiazomai enan giatro (Χρειάζομαι έναν γιατρό)
+                </p>
+              </div>
+              <div>
+                <p class="font-semibold">Where is the hospital?</p>
+                <p class="text-gray-600">
+                  Pou ine to nosokomio? (Πού είναι το νοσοκομείο;)
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Emergency Contacts -->
     <section id="emergency" class="py-16 bg-red-50 px-4">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Emergency Contacts</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- General Emergency -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <div class="text-red-500 mb-4">
-                        <i class="fas fa-phone-alt text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">General Emergency</h3>
-                    <ul class="space-y-3 text-gray-600">
-                        <li class="flex items-center">
-                            <i class="fas fa-ambulance text-red-500 mr-3"></i>
-                            <div>
-                                <p class="font-semibold">European Emergency Number</p>
-                                <p class="text-2xl font-bold text-red-600">112</p>
-                            </div>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-hospital text-red-500 mr-3"></i>
-                            <div>
-                                <p class="font-semibold">General Hospital of Zakynthos</p>
-                                <p class="text-xl font-bold text-red-600">+30 26950 29100</p>
-                                <p class="text-sm">Alexandrou Roma 1, Zakynthos Town</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                
-                <!-- Police & Tourist Police -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <div class="text-red-500 mb-4">
-                        <i class="fas fa-shield-alt text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Police & Tourist Police</h3>
-                    <ul class="space-y-3 text-gray-600">
-                        <li class="flex items-center">
-                            <i class="fas fa-police-box text-red-500 mr-3"></i>
-                            <div>
-                                <p class="font-semibold">Police</p>
-                                <p class="text-xl font-bold text-red-600">100</p>
-                            </div>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-passport text-red-500 mr-3"></i>
-                            <div>
-                                <p class="font-semibold">Tourist Police</p>
-                                <p class="text-xl font-bold text-red-600">+30 26950 24482</p>
-                                <p class="text-sm">Specialized in helping tourists</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                
-                <!-- Embassies & Consulates -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <div class="text-red-500 mb-4">
-                        <i class="fas fa-flag text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Embassies & Consulates</h3>
-                    <ul class="space-y-3 text-gray-600">
-                        <li class="flex items-start">
-                            <i class="fas fa-building text-red-500 mr-3 mt-1"></i>
-                            <div>
-                                <p class="font-semibold">UK Consulate</p>
-                                <p class="text-xl font-bold text-red-600">+30 210 727 2600</p>
-                                <p class="text-sm">Athens (nearest to Zante)</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-building text-red-500 mr-3 mt-1"></i>
-                            <div>
-                                <p class="font-semibold">US Embassy</p>
-                                <p class="text-xl font-bold text-red-600">+30 210 721 2951</p>
-                                <p class="text-sm">Athens (emergency assistance)</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                
-                <!-- Other Useful Numbers -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <div class="text-red-500 mb-4">
-                        <i class="fas fa-info-circle text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Other Useful Numbers</h3>
-                    <ul class="space-y-3 text-gray-600">
-                        <li class="flex items-center">
-                            <i class="fas fa-fire-extinguisher text-red-500 mr-3"></i>
-                            <div>
-                                <p class="font-semibold">Fire Department</p>
-                                <p class="text-xl font-bold text-red-600">199</p>
-                            </div>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-taxi text-red-500 mr-3"></i>
-                            <div>
-                                <p class="font-semibold">Taxi Service</p>
-                                <p class="text-xl font-bold text-red-600">+30 26950 48400</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                
-                <!-- Pharmacy & Medical -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <div class="text-red-500 mb-4">
-                        <i class="fas fa-prescription-bottle-alt text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Pharmacy & Medical</h3>
-                    <ul class="space-y-3 text-gray-600">
-                        <li class="flex items-center">
-                            <i class="fas fa-clinic-medical text-red-500 mr-3"></i>
-                            <div>
-                                <p class="font-semibold">24-Hour Pharmacy</p>
-                                <p class="text-xl font-bold text-red-600">+30 26950 22222</p>
-                                <p class="text-sm">Ask your hotel for nearest location</p>
-                            </div>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-user-md text-red-500 mr-3"></i>
-                            <div>
-                                <p class="font-semibold">Private Doctor Call-out</p>
-                                <p class="text-xl font-bold text-red-600">+30 26950 29100</p>
-                                <p class="text-sm">Ask hotel to arrange if needed</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                
-                <!-- Lost & Found -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <div class="text-red-500 mb-4">
-                        <i class="fas fa-search text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Lost & Found</h3>
-                    <ul class="space-y-3 text-gray-600">
-                        <li class="flex items-center">
-                            <i class="fas fa-plane text-red-500 mr-3"></i>
-                            <div>
-                                <p class="font-semibold">Zakynthos Airport Lost & Found</p>
-                                <p class="text-xl font-bold text-red-600">+30 26950 29500</p>
-                            </div>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-bus text-red-500 mr-3"></i>
-                            <div>
-                                <p class="font-semibold">Bus Terminal Lost Property</p>
-                                <p class="text-xl font-bold text-red-600">+30 26950 22255</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+      <div class="max-w-6xl mx-auto">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12"
+        >
+          Emergency Contacts
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- General Emergency -->
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="text-red-500 mb-4">
+              <i class="fas fa-phone-alt text-4xl"></i>
             </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              General Emergency
+            </h3>
+            <ul class="space-y-3 text-gray-600">
+              <li class="flex items-center">
+                <i class="fas fa-ambulance text-red-500 mr-3"></i>
+                <div>
+                  <p class="font-semibold">European Emergency Number</p>
+                  <p class="text-2xl font-bold text-red-600">112</p>
+                </div>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-hospital text-red-500 mr-3"></i>
+                <div>
+                  <p class="font-semibold">General Hospital of Zakynthos</p>
+                  <p class="text-xl font-bold text-red-600">+30 26950 29100</p>
+                  <p class="text-sm">Alexandrou Roma 1, Zakynthos Town</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Police & Tourist Police -->
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="text-red-500 mb-4">
+              <i class="fas fa-shield-alt text-4xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              Police & Tourist Police
+            </h3>
+            <ul class="space-y-3 text-gray-600">
+              <li class="flex items-center">
+                <i class="fas fa-police-box text-red-500 mr-3"></i>
+                <div>
+                  <p class="font-semibold">Police</p>
+                  <p class="text-xl font-bold text-red-600">100</p>
+                </div>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-passport text-red-500 mr-3"></i>
+                <div>
+                  <p class="font-semibold">Tourist Police</p>
+                  <p class="text-xl font-bold text-red-600">+30 26950 24482</p>
+                  <p class="text-sm">Specialized in helping tourists</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Embassies & Consulates -->
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="text-red-500 mb-4">
+              <i class="fas fa-flag text-4xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              Embassies & Consulates
+            </h3>
+            <ul class="space-y-3 text-gray-600">
+              <li class="flex items-start">
+                <i class="fas fa-building text-red-500 mr-3 mt-1"></i>
+                <div>
+                  <p class="font-semibold">UK Consulate</p>
+                  <p class="text-xl font-bold text-red-600">+30 210 727 2600</p>
+                  <p class="text-sm">Athens (nearest to Zante)</p>
+                </div>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-building text-red-500 mr-3 mt-1"></i>
+                <div>
+                  <p class="font-semibold">US Embassy</p>
+                  <p class="text-xl font-bold text-red-600">+30 210 721 2951</p>
+                  <p class="text-sm">Athens (emergency assistance)</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Other Useful Numbers -->
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="text-red-500 mb-4">
+              <i class="fas fa-info-circle text-4xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              Other Useful Numbers
+            </h3>
+            <ul class="space-y-3 text-gray-600">
+              <li class="flex items-center">
+                <i class="fas fa-fire-extinguisher text-red-500 mr-3"></i>
+                <div>
+                  <p class="font-semibold">Fire Department</p>
+                  <p class="text-xl font-bold text-red-600">199</p>
+                </div>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-taxi text-red-500 mr-3"></i>
+                <div>
+                  <p class="font-semibold">Taxi Service</p>
+                  <p class="text-xl font-bold text-red-600">+30 26950 48400</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Pharmacy & Medical -->
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="text-red-500 mb-4">
+              <i class="fas fa-prescription-bottle-alt text-4xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              Pharmacy & Medical
+            </h3>
+            <ul class="space-y-3 text-gray-600">
+              <li class="flex items-center">
+                <i class="fas fa-clinic-medical text-red-500 mr-3"></i>
+                <div>
+                  <p class="font-semibold">24-Hour Pharmacy</p>
+                  <p class="text-xl font-bold text-red-600">+30 26950 22222</p>
+                  <p class="text-sm">Ask your hotel for nearest location</p>
+                </div>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-user-md text-red-500 mr-3"></i>
+                <div>
+                  <p class="font-semibold">Private Doctor Call-out</p>
+                  <p class="text-xl font-bold text-red-600">+30 26950 29100</p>
+                  <p class="text-sm">Ask hotel to arrange if needed</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Lost & Found -->
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="text-red-500 mb-4">
+              <i class="fas fa-search text-4xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Lost & Found</h3>
+            <ul class="space-y-3 text-gray-600">
+              <li class="flex items-center">
+                <i class="fas fa-plane text-red-500 mr-3"></i>
+                <div>
+                  <p class="font-semibold">Zakynthos Airport Lost & Found</p>
+                  <p class="text-xl font-bold text-red-600">+30 26950 29500</p>
+                </div>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-bus text-red-500 mr-3"></i>
+                <div>
+                  <p class="font-semibold">Bus Terminal Lost Property</p>
+                  <p class="text-xl font-bold text-red-600">+30 26950 22255</p>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Map Section -->
     <section class="py-16 bg-white px-4">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Zante Map & Key Locations</h2>
-            
-            <div class="bg-gray-100 p-4 rounded-lg">
-                <div class="map-container rounded-lg overflow-hidden">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d201170.1002031922!2d20.7123657!3d37.7899685!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1367b3a4e0a3a7a9%3A0x400bd2ce2b9c300!2sZakynthos!5e0!3m2!1sen!2sgr!4v1689681502052!5m2!1sen!2sgr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
-                    <div class="flex items-start">
-                        <div class="bg-amber-500 text-white p-2 rounded-full mr-3">
-                            <i class="fas fa-umbrella-beach text-sm"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">Navagio Beach</h4>
-                            <p class="text-sm text-gray-600">Northwest coast</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <div class="bg-blue-500 text-white p-2 rounded-full mr-3">
-                            <i class="fas fa-water text-sm"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">Blue Caves</h4>
-                            <p class="text-sm text-gray-600">North of Skinari Cape</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <div class="bg-green-500 text-white p-2 rounded-full mr-3">
-                            <i class="fas fa-city text-sm"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">Zakynthos Town</h4>
-                            <p class="text-sm text-gray-600">Eastern coast</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <div class="bg-purple-500 text-white p-2 rounded-full mr-3">
-                            <i class="fas fa-plane text-sm"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">Zakynthos Airport</h4>
-                            <p class="text-sm text-gray-600">4km from Zakynthos Town</p>
-                        </div>
-                    </div>
-                </div>
+      <div class="max-w-6xl mx-auto">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12"
+        >
+          Zante Map & Key Locations
+        </h2>
+
+        <div class="bg-gray-100 p-4 rounded-lg">
+          <div class="map-container rounded-lg overflow-hidden">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d201170.1002031922!2d20.7123657!3d37.7899685!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1367b3a4e0a3a7a9%3A0x400bd2ce2b9c300!2sZakynthos!5e0!3m2!1sen!2sgr!4v1689681502052!5m2!1sen!2sgr"
+              width="100%"
+              height="100%"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8"
+          >
+            <div class="flex items-start">
+              <div class="bg-amber-500 text-white p-2 rounded-full mr-3">
+                <i class="fas fa-umbrella-beach text-sm"></i>
+              </div>
+              <div>
+                <h4 class="font-bold">Navagio Beach</h4>
+                <p class="text-sm text-gray-600">Northwest coast</p>
+              </div>
             </div>
+            <div class="flex items-start">
+              <div class="bg-blue-500 text-white p-2 rounded-full mr-3">
+                <i class="fas fa-water text-sm"></i>
+              </div>
+              <div>
+                <h4 class="font-bold">Blue Caves</h4>
+                <p class="text-sm text-gray-600">North of Skinari Cape</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="bg-green-500 text-white p-2 rounded-full mr-3">
+                <i class="fas fa-city text-sm"></i>
+              </div>
+              <div>
+                <h4 class="font-bold">Zakynthos Town</h4>
+                <p class="text-sm text-gray-600">Eastern coast</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="bg-purple-500 text-white p-2 rounded-full mr-3">
+                <i class="fas fa-plane text-sm"></i>
+              </div>
+              <div>
+                <h4 class="font-bold">Zakynthos Airport</h4>
+                <p class="text-sm text-gray-600">4km from Zakynthos Town</p>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Special Surprise -->
-    <section id="surprise" class="py-20 px-4 bg-gradient-to-b from-amber-100 to-amber-200">
-        <div class="max-w-4xl mx-auto text-center">
-            <div class="bg-white p-8 md:p-12 rounded-xl shadow-lg relative overflow-hidden">
-                <div class="absolute -top-10 -right-10 text-amber-100 text-9xl z-0">
-                    <i class="fas fa-heart"></i>
-                </div>
-                <div class="relative z-10">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">A Special Message For You</h2>
-                    <div class="text-lg text-gray-700 mb-8 text-left space-y-4">
-                        <p>My love,</p>
-                        <p>I'm so excited for your adventure in Zante! I wanted to create this little guide to help you make the most of your holiday and to show how much I care about you having an amazing time.</p>
-                        <p>Zante is full of magical places - from the famous Shipwreck Beach to hidden coves with crystal clear waters. I hope you'll get to experience all its beauty, taste delicious Greek food, and make wonderful memories.</p>
-                        <p>Remember to stay safe (check the emergency contacts just in case), try speaking a little Greek (the locals will love it!), and most importantly - enjoy every moment!</p>
-                        <p>I can't wait to hear all about your adventures when you're back. Take lots of photos and know that I'll be thinking of you every day.</p>
-                        <p class="font-bold">Have the most incredible time, my love!</p>
-                    </div>
-                    <div class="flex justify-center">
-                        <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Heart in sand" class="rounded-lg w-full md:w-2/3">
-                    </div>
-                    <div class="mt-8">
-                        <p class="text-amber-600 font-bold">With all my love,</p>
-                        <p class="text-xl font-bold text-gray-800">[Your Name]</p>
-                    </div>
-                </div>
+    <section
+      id="surprise"
+      class="py-20 px-4 bg-gradient-to-b from-amber-100 to-amber-200"
+    >
+      <div class="max-w-4xl mx-auto text-center">
+        <div
+          class="bg-white p-8 md:p-12 rounded-xl shadow-lg relative overflow-hidden"
+        >
+          <div class="absolute -top-10 -right-10 text-amber-100 text-9xl z-0">
+            <i class="fas fa-heart"></i>
+          </div>
+          <div class="relative z-10">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+              A Special Message For You
+            </h2>
+            <div class="text-lg text-gray-700 mb-8 text-left space-y-4">
+              <p>Dear Ali,</p>
+              <p>
+                I'm so excited for your adventure in Zante! I wanted to create
+                this little guide to help you make the most of your holiday and
+                to show how much I care about you having an amazing time.
+              </p>
+              <p>
+                Zante is full of magical places - from the famous Shipwreck
+                Beach to hidden coves with crystal clear waters. I hope you'll
+                get to experience all its beauty, taste delicious Greek food,
+                and make wonderful memories.
+              </p>
+              <p>
+                Remember to stay safe (check the emergency contacts just in
+                case), try speaking a little Greek (the locals will love it!),
+                and most importantly - enjoy every moment!
+              </p>
+              <p>
+                I can't wait to hear all about your adventures when you're back.
+                Take lots of photos and know that I'll be thinking of you every
+                day.
+              </p>
+              <p class="font-bold">Have the most incredible time!</p>
             </div>
+            <div class="flex justify-center">
+              <img
+                src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+                alt="Heart in sand"
+                class="rounded-lg w-full md:w-2/3"
+              />
+            </div>
+            <div class="mt-8">
+              <p class="text-amber-600 font-bold">With all my love,</p>
+              <p class="text-xl font-bold text-gray-800">Pantelis</p>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12 px-4">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Zante Adventure</h3>
-                    <p class="text-gray-400">A lovingly created guide to help you discover the beauty of Zakynthos island.</p>
-                    <div class="flex space-x-4 mt-6">
-                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
-                            <i class="fab fa-pinterest"></i>
-                        </a>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#places" class="text-gray-400 hover:text-amber-400 transition duration-300">Places to Visit</a></li>
-                        <li><a href="#tips" class="text-gray-400 hover:text-amber-400 transition duration-300">Travel Tips</a></li>
-                        <li><a href="#phrases" class="text-gray-400 hover:text-amber-400 transition duration-300">Greek Phrases</a></li>
-                        <li><a href="#emergency" class="text-gray-400 hover:text-amber-400 transition duration-300">Emergency Contacts</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Weather in Zante</h3>
-                    <div class="flex items-center mb-2">
-                        <i class="fas fa-sun text-amber-400 mr-2 text-xl"></i>
-                        <span class="text-gray-400">Summer: 25°C - 35°C</span>
-                    </div>
-                    <div class="flex items-center">
-                        <i class="fas fa-umbrella text-blue-400 mr-2 text-xl"></i>
-                        <span class="text-gray-400">Rain is rare in summer</span>
-                    </div>
-                    <div class="mt-6">
-                        <p class="text-gray-400">Best time for swimming: June to September</p>
-                    </div>
-                </div>
+      <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4">Zante Adventure</h3>
+            <p class="text-gray-400">
+              A lovingly created guide to help you discover the beauty of
+              Zakynthos island.
+            </p>
+            <div class="flex space-x-4 mt-6">
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition duration-300"
+              >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition duration-300"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition duration-300"
+              >
+                <i class="fab fa-pinterest"></i>
+              </a>
             </div>
-            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-                <p>Created with <i class="fas fa-heart text-red-400"></i> for your Zante adventure</p>
-                <p class="mt-2 text-sm">© 2023 Zante Adventure Guide. All rights reserved.</p>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#places"
+                  class="text-gray-400 hover:text-amber-400 transition duration-300"
+                  >Places to Visit</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#tips"
+                  class="text-gray-400 hover:text-amber-400 transition duration-300"
+                  >Travel Tips</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#phrases"
+                  class="text-gray-400 hover:text-amber-400 transition duration-300"
+                  >Greek Phrases</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#emergency"
+                  class="text-gray-400 hover:text-amber-400 transition duration-300"
+                  >Emergency Contacts</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-4">Weather in Zante</h3>
+            <div class="flex items-center mb-2">
+              <i class="fas fa-sun text-amber-400 mr-2 text-xl"></i>
+              <span class="text-gray-400">Summer: 25°C - 35°C</span>
             </div>
+            <div class="flex items-center">
+              <i class="fas fa-umbrella text-blue-400 mr-2 text-xl"></i>
+              <span class="text-gray-400">Rain is rare in summer</span>
+            </div>
+            <div class="mt-6">
+              <p class="text-gray-400">
+                Best time for swimming: June to September
+              </p>
+            </div>
+          </div>
         </div>
+        <div
+          class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400"
+        >
+          <p>
+            Created with <i class="fas fa-heart text-red-400"></i> for your
+            Zante adventure
+          </p>
+          <p class="mt-2 text-sm">
+            © 2023 Zante Adventure Guide. All rights reserved.
+          </p>
+        </div>
+      </div>
     </footer>
 
     <!-- Floating Action Button -->
     <div class="fixed bottom-6 right-6 z-50">
-        <a href="#surprise" class="bg-amber-500 hover:bg-amber-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg floating transition duration-300">
-            <i class="fas fa-heart text-xl"></i>
-        </a>
+      <a
+        href="#surprise"
+        class="bg-amber-500 hover:bg-amber-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg floating transition duration-300"
+      >
+        <i class="fas fa-heart text-xl"></i>
+      </a>
     </div>
 
     <script>
-        // Mobile menu toggle
-        const btn = document.querySelector(".mobile-menu-button");
-        const menu = document.querySelector(".mobile-menu");
+      // Mobile menu toggle
+      const btn = document.querySelector(".mobile-menu-button");
+      const menu = document.querySelector(".mobile-menu");
 
-        btn.addEventListener("click", () => {
-            menu.classList.toggle("hidden");
+      btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+
+      // Close mobile menu when clicking on a link
+      document.querySelectorAll(".mobile-menu a").forEach((link) => {
+        link.addEventListener("click", () => {
+          menu.classList.add("hidden");
         });
+      });
 
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.add('hidden');
+      // Smooth scrolling for all links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          if (targetId === "#") return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: "smooth",
             });
+          }
         });
-
-        // Smooth scrolling for all links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
+      });
     </script>
-</body>
+  </body>
 </html>
