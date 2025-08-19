@@ -2,7 +2,7 @@
 
 > A lovingly crafted, comprehensive travel guide to the beautiful Greek island of Zakynthos
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/your-site-id/deploy-status)](https://app.netlify.com/sites/your-site-name/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8159a055-2f61-45c8-9c53-18525182326f/deploy-status)](https://app.netlify.com/projects/ali-travel-guide-zante/deploys)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Responsive](https://img.shields.io/badge/responsive-yes-green.svg)
 ![Mobile Friendly](https://img.shields.io/badge/mobile--friendly-yes-brightgreen.svg)
